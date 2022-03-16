@@ -1,6 +1,5 @@
 ## Leer porfa...
-En cada clase tendremos la versión de la app en react en donde aplicamos los temas del día.  
-La carpeta con la aplicación se llama `my-app`.  
+En cada clase tendremos la versión de la app en react en donde aplicamos los temas del día.   
 Por cuestiones de espacio el proyecto no contendrá la carpeta `node_modules`.  
 Para que puedan incorporar la carpeta `node_modules` y levantar la aplicación en sus computadoras deben:  
 1. Abrir el repositorio en VisualCode.
