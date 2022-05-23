@@ -40,7 +40,7 @@ class Menu extends Component {
                         }
                         />
                     <Tab.Screen name='Login' component={ Login }/>
-                    <Tab.Screen name='Register' component={ Register }/>
+                        <Tab.Screen name='Register' component={ Register }/>
                </Tab.Navigator>
            </NavigationContainer> 
 

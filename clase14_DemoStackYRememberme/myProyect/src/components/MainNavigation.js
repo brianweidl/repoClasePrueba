@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { db, auth } from '../firebase/config';
 
 //Importar navegaciones
 import {NavigationContainer} from '@react-navigation/native';
@@ -27,22 +28,52 @@ class MainNavigation extends Component {
     }
 
 
-    login(){
+    login(mail, pass){
         //Debería loguear en Firebase y cambiar el estado loggedIn: true
         //Debe pasar como método a el componente login
+        auth.signInWithEmailAndPassword(mail, pass)
+            .then(response => console.log(response))
+            .catch( error => console.log(error))
+
     }
 
-    register(){
-        //Debería registrar en Firebase y cambiar el estado loggedIn: true
-        //Debe pasar como método a el componente register
+    
+    
+    register(mail, pass, userName){
+        //console.log(this.state)
+        //Colocar el método de registración de Firebase
+        auth.createUserWithEmailAndPassword(mail, pass)
+            .then( responseRegister => {
+                console.log(responseRegister); 
+                //Guardar documento en colección de usuarios.
+                db.collection('users').add({
+                            email: mail,
+                            userName: userName,
+                            createdAt: Date.now(),
+                        })
+                        .then( responseUsers => console.log(responseUsers))
+                        .catch(error => console.log(error))
+
+                    })
+            .catch( error => console.log(error))      
     }
+    
+    
+    // register(){
+    //     //Debería registrar en Firebase y cambiar el estado loggedIn: true
+    //     //Debe pasar como método a el componente register
+    // }
 
     logout(){
         //Debe pasar como método a el componente Porfile
+        auth.signOut()
+            .then()
+            .catch( error => console.log(error))
     }
 
 
     render(){
+        //Stack.Group funciona como React.Fragment y nos permite agrupar Screens.
         return(
             <NavigationContainer>
                 <Stack.Navigator>
@@ -53,18 +84,24 @@ class MainNavigation extends Component {
                         name='Menu'
                         component ={ Menu }
                         options = {{headerShown: false}}
+
                     />
                     :
-                    <Stack.Group>
+                    <Stack.Group> 
                         <Stack.Screen 
                             name='Login'
                             component = { Login }
                             options = {{headerShown: false}}
+                            initialParams = {
+                                {   login: (mail, pass)=>this.login(mail, pass),
+                                    logout:()=>this.logout()
+                                }}
                         />
                         <Stack.Screen 
                             name='Registro'
                             component = { Register }
                             options = {{headerShown: false}}
+                            initialParams = {{register: (mail, pass)=>this.register(mail, pass)}}
                         />
                     </Stack.Group>
                 }

@@ -14,6 +14,7 @@ class Register extends Component{
         this.state={
             email: '',
             password: '',
+            userName:''
         }
     }
 
@@ -28,6 +29,12 @@ class Register extends Component{
                     keyboardType='default'
                     placeholder='Email'
                     onChangeText={text => this.setState({ email: text})}
+                />
+                <TextInput 
+                    style={styles.field}
+                    keyboardType='default'
+                    placeholder='User Name'
+                    onChangeText={text => this.setState({ userName: text})}
                 />
                 <TextInput 
                     style={styles.field}
