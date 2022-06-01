@@ -102,11 +102,7 @@ class MainNavigation extends Component {
                             initialParams = {{ logout: ()=> this.logout()}}
                         />
                         {/* ACA VA LA PANTALL DE COMENTARIOS */}
-                        <Stack.Screen 
-                            name='Comentarios'
-                            component ={ Comments }
-                            initialParams = {{}}
-                        />
+                        
                         {/* ¿COMO SABEMOS CUAL ES EL POSTEO EN DONDE ESTAN LOS COMENTARIOS? */}
                     </Stack.Group> 
                     :

@@ -34,7 +34,7 @@ class Post extends Component{
                 likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
             })
             .then(()=> this.setState({
-                cantidadDeLikes:this.state.cantidadDeLikes.length,
+                cantidadDeLikes:this.state.cantidadDeLikes.length + 1,
                 myLike: true,
             }))
             .catch(error => console.log(error))
@@ -49,7 +49,7 @@ class Post extends Component{
                 likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
             })
             .then(()=> this.setState({
-                cantidadDeLikes:this.state.cantidadDeLikes.length,
+                cantidadDeLikes:this.state.cantidadDeLikes.length - 1,
                 myLike: false
             }))
             .catch(error => console.log(error))
