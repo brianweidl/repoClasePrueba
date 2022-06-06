@@ -34,7 +34,7 @@ class Post extends Component{
                 likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
             })
             .then(()=> this.setState({
-                cantidadDeLikes:this.state.cantidadDeLikes + 1,
+                cantidadDeLikes:this.state.cantidadDeLikes + 1, //Se puede mejorar.
                 myLike: true,
             }))
             .catch(error => console.log(error))
@@ -49,16 +49,15 @@ class Post extends Component{
                 likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
             })
             .then(()=> this.setState({
-                cantidadDeLikes:this.state.cantidadDeLikes - 1,
+                cantidadDeLikes:this.state.cantidadDeLikes - 1, //Se puede mejorar
                 myLike: false
             }))
             .catch(error => console.log(error))
-
     }
 
 
     render(){
-        console.log(this.props);
+        // console.log(this.props);
         return(
                 <View style={styles.separator}>
                     <Text>Post de: {this.props.dataPost.data.owner}</Text>
@@ -73,7 +72,7 @@ class Post extends Component{
                             <Text>Like</Text>
                         </TouchableOpacity>                
                     }
-                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('Comentarios')}>
+                    <TouchableOpacity onPress={ () => this.props.navigation.navigate('Comentarios', { id: this.props.dataPost.id})} > 
                         <Text>Ver comentarios</Text>
                     </TouchableOpacity>   
                     
