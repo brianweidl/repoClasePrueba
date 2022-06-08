@@ -62,9 +62,10 @@ class MainNavigation extends Component {
                             userName: userName,
                             createdAt: Date.now(),
                         })
-                        .then( responseUsers => this.setState({
-                            loggedIn:true,
-                        }))
+                        // .then( responseUsers => this.setState({
+                        //     loggedIn:true,
+                        // }))
+                        .thne( res => console.log(res))
                         .catch(error => console.log(error) )
 
                     })
@@ -102,7 +103,10 @@ class MainNavigation extends Component {
                             initialParams = {{ logout: ()=> this.logout()}}
                         />
                         {/* ACA VA LA PANTALL DE COMENTARIOS */}
-                        
+                        <Stack.Screen 
+                            name='Comentarios'
+                            component={ Comments }
+                        />
                         {/* ¿COMO SABEMOS CUAL ES EL POSTEO EN DONDE ESTAN LOS COMENTARIOS? */}
                     </Stack.Group> 
                     :

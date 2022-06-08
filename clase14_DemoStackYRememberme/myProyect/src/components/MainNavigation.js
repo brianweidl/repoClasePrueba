@@ -101,7 +101,7 @@ class MainNavigation extends Component {
                             name='Registro'
                             component = { Register }
                             options = {{headerShown: false}}
-                            initialParams = {{register: (mail, pass)=>this.register(mail, pass)}}
+                            initialParams = {{register: (mail, pass, userName)=>this.register(mail, pass, userName)}}
                         />
                     </Stack.Group>
                 }

@@ -107,7 +107,7 @@ class MainNavigation extends Component {
                         <Stack.Screen 
                             name='Registro'
                             options = {{headerShown: false}}
-                            initialParams = { {register: (mail, pass)=>this.register(mail, pass)}}
+                            initialParams = { {register: (mail, pass, userName)=>this.register(mail, pass, userName)}}
                             children = {(navigationProps)=><Register errores={this.state.registerError} {...navigationProps}/>}
                         />
                     </Stack.Group>

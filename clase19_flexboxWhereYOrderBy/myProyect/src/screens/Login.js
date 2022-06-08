@@ -6,24 +6,23 @@ import {
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
-import {auth} from '../firebase/config';
 
-class Register extends Component{
+
+class Login extends Component{
     constructor(props){
         super(props)
         this.state={
             email: '',
             password: '',
-            userName:''
         }
     }
 
+
     render(){
-        console.log(this.state.email);
-        console.log(this.state.password);
+        //Falta implementar for de login y el método que viene de mainNavigation 
         return(
-            <View style={styles.container}>
-                <Text style={styles.title}>Registro</Text>
+                <View style={styles.container}>
+                <Text style={styles.title}>Login</Text>
                 <TextInput 
                     style={styles.field}
                     keyboardType='default'
@@ -33,25 +32,18 @@ class Register extends Component{
                 <TextInput 
                     style={styles.field}
                     keyboardType='default'
-                    placeholder='User Name'
-                    onChangeText={text => this.setState({ userName: text})}
-                />
-                <TextInput 
-                    style={styles.field}
-                    keyboardType='default'
                     placeholder='password'
                     secureTextEntry={true}
                     onChangeText={text => this.setState({ password: text})}
                 />
-                <TouchableOpacity onPress={()=>this.props.route.params.register(this.state.email, this.state.password, this.state.userName)}>
-                    <Text>Registrarme</Text>
+                <TouchableOpacity style={styles.button} onPress={()=>this.props.route.params.login(this.state.email, this.state.password)}>
+                    <Text style={ styles.buttonText}>Ingresar</Text>
                 </TouchableOpacity>   
-                 <TouchableOpacity onPress={ ()=>this.props.navigation.navigate('Login') }>
-                        <Text>Ya tengo cuenta</Text>
+                 <TouchableOpacity onPress={ ()=>this.props.navigation.navigate('Registro') }>
+                        <Text>No tengo cuenta</Text>
                  </TouchableOpacity>
             
             </View>
-
         )
     }
 
@@ -72,7 +64,16 @@ const styles = StyleSheet.create({
         padding:3,
         marginBottom:8
 
+    },
+    button: {
+        borderRadius: 2,
+        padding:3,
+        backgroundColor: 'green',
+    },
+    buttonText:{
+        color: '#fff'
     }
 })
 
-export default Register;
+
+export default Login;
