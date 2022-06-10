@@ -1,1 +1,0 @@
-Practicamos temas de js vistos en programación 1 y 2. Ver Playground.
